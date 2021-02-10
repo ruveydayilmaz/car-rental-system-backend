@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    class BrandManager:IBrandService
+    public class BrandManager:IBrandService
     {
         IBrandDal _brandDal;
 
@@ -32,7 +32,7 @@ namespace Business.Concrete
         public void Delete(Brand brand)
         {
             _brandDal.Delete(brand);
-            Console.WriteLine("brand succesfully deleted\n");
+            Console.WriteLine("{0} brand succesfully deleted\n",brand.BrandName);
         }
 
         public void Update(Brand brand)
@@ -48,7 +48,7 @@ namespace Business.Concrete
 
         public List<Brand> GetAll()
         {
-            Console.WriteLine("ALL BRANDS\n");
+            Console.WriteLine("\nALL BRANDS");
             return _brandDal.GetAll();
 
         }
