@@ -13,9 +13,34 @@ namespace ConsoleUI
             CarTest();
             BrandTest();
             ColorTest();
+            RentalTest();
+            CustomerTest();
+            //UserTest();
 
         }
 
+        private static void CustomerTest()
+        {
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            customerManager.Add(new Entities.Concrete.Customer { UserId = 1, CompanyName = "c"});
+        }
+
+        private static void UserTest()
+        {
+
+        }
+
+        private static void RentalTest()
+        {
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            var result = rentalManager.GetRentalDetailsDto().Data;
+
+            foreach (var r in result)
+            {
+                Console.WriteLine(r.CarId + "/" + r.CarName + "/" + r.RentDate + "/" + r.ReturnDate);
+            }
+        }
+        
         private static void ColorTest()
         {
             ColorManager colorManager = new ColorManager(new EfColorDal());
@@ -27,6 +52,7 @@ namespace ConsoleUI
             {
                 Console.WriteLine(color.ColorName);
             }
+            Console.WriteLine("\n");
         }
 
         private static void BrandTest()
@@ -40,6 +66,7 @@ namespace ConsoleUI
             {
                 Console.WriteLine(brand.BrandName);
             }
+            Console.WriteLine("\n");
         }
 
         private static void CarTest()
@@ -60,20 +87,19 @@ namespace ConsoleUI
             {
                 Console.WriteLine(c.CarName + "/"  + c.DailyPrice );
             }
-
             Console.WriteLine("\n");
 
             foreach (var c in carManager.GetCarDetails().Data)
             {
                 Console.WriteLine(c.CarName + "/" + c.BrandName + "/" + c.ColorName + "/" + c.DailyPrice );
             }
-
             Console.WriteLine("\n");
 
             foreach (var c in carManager.GetAll().Data)
             {
                 Console.WriteLine(c.Id + "/" + c.BrandId + "/" + c.ColorId + "/" + c.DailyPrice + "/" + c.Description + "/" + c.ModelYear);
             }
+            Console.WriteLine("\n");
         }
     }
 }

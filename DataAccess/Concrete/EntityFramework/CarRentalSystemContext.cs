@@ -15,5 +15,8 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Car> tCars { get; set; }
         public DbSet<Color> tColors { get; set; }
         public DbSet<Brand> tBrands { get; set; }
+        public DbSet<User> tUsers { get; set; }
+        public DbSet<Customer> tCustomers { get; set; }
+        public DbSet<Rental> tRentals { get; set; }
     }
 }
